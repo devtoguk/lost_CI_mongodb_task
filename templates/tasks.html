@@ -26,6 +26,9 @@
                 <strong>{{ task.category_name }}</strong>
                 <p>{{ task.task_description }}</p>
                 <p><em>by: {{ task.created_by }}</em></p>
+                {% if task.venue %}
+                    <p><em>in the: {{ task.venue.name }}</em></p>
+                {% endif %}
             </div>
         </li>
         {% endfor %}

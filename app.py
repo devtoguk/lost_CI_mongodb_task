@@ -119,6 +119,25 @@ def add_task():
     return render_template("add_task.html", categories=categories)
 
 
+@app.route("/more")
+def more_data():
+    is_urgent = "on"
+    task = {
+        "category_name": "home",
+        "task_name": "activity-A",
+        "task_description": "some description",
+        "is_urgent": is_urgent,
+        "due_date": "10/10/2024",
+        "created_by": "999",
+        "venue": {'name': 'canon hall',
+                  'town': 'barnsley',
+                  'county': 'south yorkshire'}
+    }
+    mongo.db.tasks.insert_one(task)
+    flash("Data added")
+    return redirect(url_for("get_tasks"))
+
+
 @app.route("/edit_task/<task_id>", methods=["GET", "POST"])
 def edit_task(task_id):
     if request.method == "POST":
