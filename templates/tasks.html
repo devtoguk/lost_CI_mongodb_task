@@ -29,6 +29,13 @@
                 {% if task.venue %}
                     <p><em>in the: {{ task.venue.name }}</em></p>
                 {% endif %}
+                {% if task.testdate %}
+                    <p><em>test date: {{ task.testdate.strftime('%d-%b-%Y') }}
+                    </em></p>
+                {% endif %}
+                {% if task.featured %}
+                    <p><em>Is it featured: {{ task.featured }}</em></p>
+                {% endif %}
             </div>
         </li>
         {% endfor %}
